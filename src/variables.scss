@@ -4,4 +4,59 @@ $hotPink: #bd2e95;
 $brightGray: #EEEEEE;
 $white: #fff;
 $black: #000;
+$infoColor: #33b5e5;
+$dangerColor: #ff4444;
+$warningColor: #ffbb33;
+$successColor: #00C851;
 $shadow: 0px 1px 5px lightgray;
+
+.button {
+    min-width: 100px;
+    width: auto;
+    padding: 0px 5px 0px 5px;
+    height: 35px;
+    background-color: $darkPurple;
+    color: $white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+}
+
+.card {
+    background-color: $white;
+    height: auto;
+    min-height: 910px;
+    padding: 0px 5px 0px 5px;
+    border-radius: 5px;
+
+    .card-header {
+        height: 50px;
+        border-bottom: 1px solid $brightGray;
+        display: flex;
+        align-items: center;
+
+        .card-title {
+            font-weight: 400;
+            font-size: 16px;
+            margin-left: 5px;
+        }
+
+        .card-actions {
+            width: 100%;
+            text-align: right;
+        }
+    }
+}
+
+input {
+    min-width: 400px;
+    width: auto;
+    height: 35px;
+    border: none;
+    border-bottom: 2px solid $brightGray;
+}

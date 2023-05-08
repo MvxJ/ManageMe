@@ -1,0 +1,42 @@
+@import '../../../variables.scss';
+
+.log-in-form {
+    width: 100%;
+    height: 900px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .form-container {
+        background-color: $white;
+        border-radius: 5px;
+        padding: 5px;
+        box-shadow: $shadow;
+        height: 400px;
+        width: 600px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        .form-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+
+            img {
+                margin-right: 25px;
+            }
+        }
+
+        .form-row {
+            display: flex;
+            flex-direction: column;
+            margin: 5px;
+        }
+
+        .button {
+            margin-top: 20px;
+        }
+    }
+}

@@ -1,0 +1,46 @@
+@import '../../../variables.scss';
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    .featur-image {
+        height: 150px;
+        width: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+    }
+
+    .project-data {
+        padding: 5px;
+
+        .project-title {
+            font-weight: 600;
+        }
+
+        .project-description {
+            font-weight: 400;
+            font-size: 12px;
+        }
+    }
+
+    .hover-text {
+        position: relative;
+        top: 70px;
+        background-color: $darkPurple;
+        color: $white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.3s ease-in-out;
+    }
+
+    &:hover {
+        cursor: pointer;
+        .hover-text {
+            top: 0px
+        }
+    }
+}

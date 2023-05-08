@@ -1,0 +1,29 @@
+<div class="user-card">
+    <div class="info">
+        <div class="icon">
+            {{ user.name.slice(0, 1) }}{{ user.surname.slice(0, 1) }}
+        </div>
+        <div class="display-name">
+            {{ user.name }} {{user.surname}}
+        </div>
+        <div class="roles">
+            <span *ngFor="let role of user.roles"> [{{role.name}}] </span>
+        </div>
+    </div>
+    <div class="actions">
+        <a routerLink='detail/{{user.id}}'>
+            <div class="info">
+                <span>Detail</span>
+                <fa-icon [icon]="infoIcon"></fa-icon>
+            </div>
+        </a>
+        <div class="edit">
+            <span>Edit</span>
+            <fa-icon [icon]="editIcon"></fa-icon>
+        </div>
+        <div class="delete">
+            <span>Delete</span>
+            <fa-icon [icon]="deleteIcon"></fa-icon>
+        </div>
+    </div>
+</div>

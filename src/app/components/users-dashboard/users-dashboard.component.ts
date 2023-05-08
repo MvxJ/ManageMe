@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserModel } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-users-dashboard',
@@ -6,5 +7,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./users-dashboard.component.scss']
 })
 export class UsersDashboardComponent {
-
 }
