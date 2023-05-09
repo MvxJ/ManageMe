@@ -17,10 +17,12 @@
                 <fa-icon [icon]="infoIcon"></fa-icon>
             </div>
         </a>
-        <div class="edit">
-            <span>Edit</span>
-            <fa-icon [icon]="editIcon"></fa-icon>
-        </div>
+        <a routerLink="edit/{{user.id}}">
+            <div class="edit">
+                <span>Edit</span>
+                <fa-icon [icon]="editIcon"></fa-icon>
+            </div>
+        </a>
         <div class="delete">
             <span>Delete</span>
             <fa-icon [icon]="deleteIcon"></fa-icon>

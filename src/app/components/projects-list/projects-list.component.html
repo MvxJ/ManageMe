@@ -1,5 +1,9 @@
-<div class="projects-list">
-    <div class="project-card" *ngFor="let project of projects">
-        <app-project-card [project]="project"></app-project-card>
+<div class="wrapper">
+    <div class="projects-list">
+        <div class="project-card" *ngFor="let project of projects">
+            <a routerLink="detail/{{project.key}}">
+                <app-project-card [project]="project"></app-project-card>
+            </a>
+        </div>
     </div>
 </div>

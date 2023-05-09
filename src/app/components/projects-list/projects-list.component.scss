@@ -1,18 +1,29 @@
 @import '../../../variables.scss';
 
-.projects-list {
-    display: grid;
-    max-width: 100%;
-    grid-template-columns: repeat(auto-fill, minmax(325px, 1fr));
-    gap: 25px;
-    margin-top: 5px;
+.wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 
-    .project-card {
-        flex: 0 1 calc(25% - 1em);
-        min-height: 400px;
-        margin-bottom: 15px;
-        box-shadow: $shadow;
-        overflow: hidden;
-        // border: 1px solid $brightGray;
+    .projects-list {
+        display: grid;
+        max-width: 80%;
+        grid-template-columns: repeat(auto-fill, minmax(325px, 1fr));
+        gap: 25px;
+        margin-top: 5px;
+    
+        .project-card {
+            flex: 0 1 calc(25% - 1em);
+            min-height: 400px;
+            margin-bottom: 15px;
+            box-shadow: $shadow;
+            overflow: hidden;
+            border-radius: 5px;
+    
+            a {
+                text-decoration: none;
+                color: $black;
+            }
+        }
     }
 }

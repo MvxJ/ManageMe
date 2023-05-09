@@ -12,4 +12,14 @@ export class ProjectCardComponent {
     title: '',
     description: ''
   }
+  images = [
+    'assets/web-development.png',
+    'assets/online-payment.png',
+    'assets/analytics.png'
+  ]
+  randImage = this.images[Math.floor(Math.random() * (this.images.length))];
+  
+  ngOnInit() {
+    console.log(this.randImage);
+  }
 }

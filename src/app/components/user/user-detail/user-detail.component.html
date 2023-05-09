@@ -1,0 +1,71 @@
+<div class="user-form">
+    <div class="form-wrapper">
+        <div class="action-buttons">
+            <a routerLink="../../edit/{{user.id}}">
+                <div class="edit">
+                    <span>Edit</span>
+                    <fa-icon [icon]="editIcon"></fa-icon>
+                </div>
+            </a>
+            <div class="delete">
+                <span>Delete</span>
+                <fa-icon [icon]="deleteIcon"></fa-icon>
+            </div>
+        </div>
+        <div>
+            <div class="form-row">
+                <div class="user-profile-icon">
+                    {{ user.name.slice(0, 1) }}{{ user.surname.slice(0, 1) }}
+                </div>
+                <div class="user-header">
+                    {{ user.name }} {{ user.surname}}                          
+                    <div *ngFor="let role of user.roles" class="user-role">
+                        &nbsp;[{{ role.name }}] 
+                   </div>
+                </div>
+            </div>
+            
+            <h3>User details:</h3>
+            <div class="form-row">
+                <div class="form-column">
+                    <label for="name">Name</label>
+                    <div id="name">{{ user.name }}</div>
+                </div>
+                <div class="form-column">
+                    <label for="surname">Surname</label>
+                    <div id="surname">{{ user.surname }}</div>
+                </div>
+            </div>
+
+            <h3>Creditendials: </h3>
+            <div class="form-row">
+                <div class="form-column">
+                    <label for="username">Username</label>
+                    <div id="username">{{ user.username }}</div>
+                </div>
+                <div class="form-column">
+                    <label for="password">Password</label>
+                    <div id="password" class="password">
+                        <div (click)="toggleVisiblity()" class="password-icon">
+                            <fa-icon [icon]="showPasswordIcon" *ngIf="!showPassword"></fa-icon>
+                            <fa-icon [icon]="hidePasswordIcon" *ngIf="showPassword"></fa-icon>
+                        </div>
+                        <div class="user-password">
+                            {{ showPassword ? user.password : '************' }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Projects: </h3>
+            <div class="form-row">
+
+            </div>
+
+            <h3>Assigned tasks: </h3>
+            <div class="form-row">
+
+            </div>
+        </div>
+    </div>
+</div>
