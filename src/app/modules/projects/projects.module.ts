@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { ProjectsListComponent } from 'src/app/components/projects-list/projects-list.component';
-import { ProjectsDashboardComponent } from 'src/app/components/projects-dashboard/projects-dashboard.component';
-import { ProjectDetailComponent } from 'src/app/components/project-detail/project-detail.component';
-import { ProjectFormComponent } from 'src/app/components/project-form/project-form.component';
+import { ProjectsListComponent } from 'src/app/components/project/projects-list/projects-list.component';
+import { ProjectsDashboardComponent } from 'src/app/components/project/projects-dashboard/projects-dashboard.component';
+import { ProjectDetailComponent } from 'src/app/components/project/project-detail/project-detail.component';
+import { ProjectFormComponent } from 'src/app/components/project/project-form/project-form.component';
 
 const routes: Routes = [
   {

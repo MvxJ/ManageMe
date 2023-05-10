@@ -9,8 +9,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { TopNavigationComponent } from './components/top-navigation/top-navigation.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { ProjectsListComponent } from './components/projects-list/projects-list.component';
-import { ProjectsDashboardComponent } from './components/projects-dashboard/projects-dashboard.component';
+import { ProjectsListComponent } from './components/project/projects-list/projects-list.component';
+import { ProjectsDashboardComponent } from './components/project/projects-dashboard/projects-dashboard.component';
 import { UsersDashboardComponent } from './components/user/users-dashboard/users-dashboard.component';
 import { UsersListComponent } from './components/user/users-list/users-list.component';
 import { enviroment } from 'src/enviroment/enviroment';
@@ -20,10 +20,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ScrollTopComponent } from './components/scroll-top/scroll-top.component';
 import { UserCardComponent } from './components/user/user-card/user-card.component';
 import { UserDetailComponent } from './components/user/user-detail/user-detail.component';
-import { ProjectCardComponent } from './components/project-card/project-card.component';
-import { ProjectDetailComponent } from './components/project-detail/project-detail.component';
+import { ProjectCardComponent } from './components/project/project-card/project-card.component';
+import { ProjectDetailComponent } from './components/project/project-detail/project-detail.component';
 import { UserFormComponent } from './components/user/user-form/user-form.component';
-import { ProjectFormComponent } from './components/project-form/project-form.component';
+import { ProjectFormComponent } from './components/project/project-form/project-form.component';
 
 @NgModule({
   declarations: [
