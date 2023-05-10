@@ -32,6 +32,5 @@ export class LogInComponent {
   logIn() {
     const username = this.form.get('username')?.value;
     const password = this.form.get('password')?.value;
-    console.log(username, password);
   }
 }

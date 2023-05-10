@@ -1,5 +1,46 @@
-<div class="wrapper">
-    <div class="actions">
-        
+<div class="project-form">
+    <div class="form-wrapper">
+        <div class="action-buttons">
+            <a routerLink="../../edit/{{project?.key}}" [state]="project">
+                <div class="edit">
+                    <span>Edit</span>
+                    <fa-icon [icon]="editIcon"></fa-icon>
+                </div>
+            </a>
+            <div class="delete" (click)="deleteProject()">
+                <span>Delete</span>
+                <fa-icon [icon]="deleteIcon"></fa-icon>
+            </div>
+        </div>
+        <div>
+            <h3>Project Description</h3>
+            <div class="form-row">
+                <div class="form-column col-100">
+                    <label for="name">Title</label>
+                    <div>{{ project?.title }}</div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-column col-100">
+                    <label for="name">Description</label>
+                    <div>{{ project?.description }}</div>
+                </div>
+            </div>
+
+            <h3>Project Tasks</h3>
+            <div class="form-row">  
+                <div class="form-column">
+                    <label for="name">Functionalities: </label>
+                </div>
+                <div class="form-column">
+                    <label for="name">Tasks: </label>
+                </div>
+            </div>
+
+            <h3>Assigned Users</h3>
+            <div class="form-row">
+
+            </div>
+        </div>
     </div>
 </div>

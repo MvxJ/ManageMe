@@ -1,0 +1,32 @@
+@import '../../../../variables.scss';
+
+.project-form {
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+
+    .form-wrapper {
+        width: 80%;
+
+        .action-buttons {
+            width: 100%;
+            text-align: right;
+        }
+
+        .form-row {
+            display: flex;
+            flex-direction: row;
+
+            .form-column {
+                display: flex;
+                flex-direction: column;
+                width: 50%;
+                margin: 5px;
+
+                &.col-100 {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

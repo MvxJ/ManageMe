@@ -1,7 +1,17 @@
+
+<div class="wrapper actions">
+    <div class="actions">
+        <a routerLink="add">            
+            <button class="button">
+                Create project
+            </button>
+        </a>
+    </div>
+</div>
 <div class="wrapper">
     <div class="projects-list">
-        <div class="project-card" *ngFor="let project of projects">
-            <a routerLink="detail/{{project.key}}">
+        <div class="project-card" *ngFor="let project of projects; let i = index">
+            <a routerLink="detail/{{project.key}}" [state]="project">
                 <app-project-card [project]="project"></app-project-card>
             </a>
         </div>

@@ -1,0 +1,100 @@
+@import '../../../../variables.scss';
+
+.project-form {
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+
+    .form-wrapper {
+        width: 80%;
+
+        .action-buttons {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+
+            a {
+                text-decoration: none;
+            }
+    
+            div {
+                height: 35px;
+                width: 35px;
+                margin: 0px 5px 0px 5px;
+                cursor: pointer;
+                border-radius: 5px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: $white;
+                font-size: 16px;
+                overflow: hidden;
+                transition: 0.3s ease-in-out;
+    
+                span {
+                    display: none;
+                }
+    
+                &.delete {
+                    color: $dangerColor;
+                    border: 1px solid $dangerColor;
+    
+                    &:hover {
+                        background-color: $dangerColor;
+                        color: $white;
+                    }
+                }
+    
+                &.edit {
+                    color: $warningColor;
+                    border: 1px solid $warningColor;
+    
+                    &:hover {
+                        background-color: $warningColor;
+                        color: $white;
+                    }
+                }
+    
+                &.info {
+                    color: $infoColor;
+                    border: 1px solid $infoColor;
+    
+                    &:hover {
+                        background-color: $infoColor;
+                        color: $white;
+                    }
+                }
+    
+                &:hover {
+                    width: 100px;
+                    
+                    span {
+                        display: block;
+                        margin-right: 5px;
+                    }
+                }
+            }
+        }
+
+        .form-row {
+            display: flex;
+            flex-direction: row;
+
+            .form-column {
+                display: flex;
+                flex-direction: column;
+                width: 50%;
+                margin: 5px;
+
+                &.col-100 {
+                    width: 100%;
+                }
+
+                label {
+                    color: $lightPurple;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+}

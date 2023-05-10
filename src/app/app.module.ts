@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth'; 
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -49,7 +51,8 @@ import { ProjectFormComponent } from './components/project/project-form/project-
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(enviroment.firebaseConfig),
+    provideFirebaseApp(() => initializeApp(enviroment.firebaseConfig)),
+    provideFirestore(() => getFirestore()),
     AngularFireAuthModule,
     FormsModule,
     ReactiveFormsModule,

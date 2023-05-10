@@ -18,8 +18,4 @@ export class ProjectCardComponent {
     'assets/analytics.png'
   ]
   randImage = this.images[Math.floor(Math.random() * (this.images.length))];
-  
-  ngOnInit() {
-    console.log(this.randImage);
-  }
 }
