@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserModel } from 'src/app/models/user.model';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-user-detail',
@@ -12,31 +13,18 @@ import { faEyeSlash } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./user-detail.component.scss']
 })
 export class UserDetailComponent {
-  constructor(private route: ActivatedRoute) {}
-  users: Array<UserModel> = [
-    {
-      id: 'fef0h2k7',
-      name: 'John',
-      password: 'password',
-      roles: [{key: 'fe10', name: 'Admin'}],
-      surname: 'Doe',
-      username: 'johndoe'
-    },
-    {
-      id: 'fef0h2k8',
-      name: 'Alan',
-      password: 'password',
-      roles: [{key: 'fe12', name: 'Developer'}],
-      surname: 'Marek',
-      username: 'alanmarek'
-    }
-  ];
+  constructor(
+    private route: ActivatedRoute, 
+    private usersSerice: UserService,
+    private router: Router
+  ) {}
+  users: any
   key: string|null = null;
   user: UserModel ={
     id: '',
     name: '',
     password: '',
-    roles: [{key: '', name: ''}],
+    role: '',
     surname: '',
     username: ''
   }
@@ -48,15 +36,22 @@ export class UserDetailComponent {
   hidePasswordIcon = faEyeSlash;
 
   ngOnInit() {
-    this.key = this.route.snapshot.paramMap.get('id')
-    const results = this.users.filter(user => user.id == this.key);
-    if(results) {
-      this.user = results[0];
-    }
+    const id = this.route.snapshot.paramMap.get('id')
+    const users = this.usersSerice.getUsers().subscribe(users => {
+      const result = users.filter(user => user.id == id)
+      this.user = result[0];
+    })    
   }
 
   toggleVisiblity() {
     this.showPassword = !this.showPassword;
     this.inputPasswordType = this.showPassword ? 'text' : 'password';
+  }
+
+  deleteUser() {
+    if (this.user) {
+      this.usersSerice.deleteUser(this.user);
+      this.router.navigateByUrl('/users');
+    }
   }
 }

@@ -1,19 +1,19 @@
 <div class="user-form">
     <div class="form-wrapper">
         <div class="action-buttons">
-            <button *ngIf="editorMode" class="button">Create</button>
-            <button *ngIf="!editorMode" class="button">Save</button>
+            <button *ngIf="editorMode" class="button" (click)="addUser()">Create</button>
+            <button *ngIf="!editorMode" class="button" (click)="saveUser()">Save</button>
         </div>
-        <form>
+        <form [formGroup]="form">
             <h3>User details:</h3>
             <div class="form-row">
                 <div class="form-column">
                     <label for="name">Name</label>
-                    <input type="text" name="name" placeholder="John">
+                    <input type="text" name="name" placeholder="John" formControlName="name">
                 </div>
                 <div class="form-column">
                     <label for="surname">Surname</label>
-                    <input type="text" name="surname" placeholder="Doe">
+                    <input type="text" name="surname" placeholder="Doe" formControlName="surname">
                 </div>
             </div>
 
@@ -21,11 +21,11 @@
             <div class="form-row">
                 <div class="form-column">
                     <label for="username">Username</label>
-                    <input type="username" name="username" placeholder="johndoe">
+                    <input type="username" name="username" placeholder="johndoe" formControlName="username">
                 </div>
                 <div class="form-column">
                     <label for="password">Password</label>
-                    <input type="password" name="password" placeholder="********">
+                    <input type="password" name="password" placeholder="********" formControlName="password">
                 </div>
             </div>
 
@@ -33,10 +33,10 @@
             <div class="form-row">
                 <div class="form-column">
                     <label for="roles">User role</label>
-                    <select name="roles">
-                        <option value="{key: 'fe12', name: 'Devops'}">Devops</option>
-                        <option value="{key: 'fe10', name: 'Admin'}">Admin</option>
-                        <option value="{key: 'fe11', name: 'Developer'}">Developer</option>
+                    <select name="roles" formControlName="role">
+                        <option value="Devops">Devops</option>
+                        <option value="Admin">Admin</option>
+                        <option value="Developer">Developer</option>
                     </select>
                 </div>
             </div>

@@ -7,7 +7,7 @@
             {{ user.name }} {{user.surname}}
         </div>
         <div class="roles">
-            <span *ngFor="let role of user.roles"> [{{role.name}}] </span>
+            <span> [{{user.role}}] </span>
         </div>
     </div>
     <div class="actions">
@@ -17,13 +17,13 @@
                 <fa-icon [icon]="infoIcon"></fa-icon>
             </div>
         </a>
-        <a routerLink="edit/{{user.id}}">
+        <a routerLink="edit/{{user.id}}" [state]="user">
             <div class="edit">
                 <span>Edit</span>
                 <fa-icon [icon]="editIcon"></fa-icon>
             </div>
         </a>
-        <div class="delete">
+        <div class="delete" (click)="deleteUser()">
             <span>Delete</span>
             <fa-icon [icon]="deleteIcon"></fa-icon>
         </div>

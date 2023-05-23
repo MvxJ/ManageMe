@@ -6,5 +6,5 @@ export type UserModel = {
     password: string,
     name: string,
     surname: string,
-    roles: Array<RoleModel>
+    role: string
 }

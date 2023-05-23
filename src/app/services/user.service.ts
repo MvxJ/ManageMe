@@ -7,7 +7,7 @@ import { UserModel } from "../models/user.model";
 @Injectable({
     providedIn: 'root'
 })
-export class ProjectService {
+export class UserService {
     constructor(private fireStore: Firestore) {}
 
     addUser(user: UserModel) {
@@ -30,7 +30,7 @@ export class ProjectService {
 
     getUsers(): Observable<UserModel[]> {
         let projectsRef = collection(this.fireStore, 'Users');
-        const users = collectionData(projectsRef, {idField: 'key'}) as Observable<UserModel[]>;
+        const users = collectionData(projectsRef, {idField: 'id'}) as Observable<UserModel[]>;
         
         return users;
     }

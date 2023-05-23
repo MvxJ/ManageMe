@@ -3,6 +3,8 @@ import { UserModel } from 'src/app/models/user.model';
 import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
+import { UserService } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -11,11 +13,16 @@ import { faEdit } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./user-card.component.scss']
 })
 export class UserCardComponent {
+  constructor (
+    private usersSerice: UserService,
+    private router: Router
+  ) {}
+
   @Input() user: UserModel = {
     id: '',
     name: '',
     password: '',
-    roles: [],
+    role: '',
     surname: '',
     username: ''
   };
@@ -23,4 +30,11 @@ export class UserCardComponent {
   infoIcon = faCircleInfo;
   editIcon = faEdit;
   deleteIcon = faTrash;
+
+  deleteUser() {
+    if (this.user) {
+      this.usersSerice.deleteUser(this.user);
+      this.router.navigateByUrl('/users');
+    }
+  }
 }

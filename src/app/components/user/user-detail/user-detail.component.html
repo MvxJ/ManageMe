@@ -1,13 +1,13 @@
 <div class="user-form">
     <div class="form-wrapper">
         <div class="action-buttons">
-            <a routerLink="../../edit/{{user.id}}">
+            <a routerLink="../../edit/{{user.id}}" [state]="user">
                 <div class="edit">
                     <span>Edit</span>
                     <fa-icon [icon]="editIcon"></fa-icon>
                 </div>
             </a>
-            <div class="delete">
+            <div class="delete" (click)="deleteUser()">
                 <span>Delete</span>
                 <fa-icon [icon]="deleteIcon"></fa-icon>
             </div>
@@ -19,8 +19,8 @@
                 </div>
                 <div class="user-header">
                     {{ user.name }} {{ user.surname}}                          
-                    <div *ngFor="let role of user.roles" class="user-role">
-                        &nbsp;[{{ role.name }}] 
+                    <div class="user-role">
+                        &nbsp;[{{ user.role }}] 
                    </div>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 <div class="project-form">
     <div class="form-wrapper">
         <div class="action-buttons">
-            <a routerLink="../../edit/{{project?.key}}" [state]="project">
+            <a routerLink="../../edit/{{project.key}}" [state]="project">
                 <div class="edit">
                     <span>Edit</span>
                     <fa-icon [icon]="editIcon"></fa-icon>
@@ -17,13 +17,13 @@
             <div class="form-row">
                 <div class="form-column col-100">
                     <label for="name">Title</label>
-                    <div>{{ project?.title }}</div>
+                    <div>{{ project.title }}</div>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-column col-100">
                     <label for="name">Description</label>
-                    <div>{{ project?.description }}</div>
+                    <div>{{ project.description }}</div>
                 </div>
             </div>
 
