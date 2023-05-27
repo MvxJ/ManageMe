@@ -23,17 +23,17 @@ export class FunctionalityService {
         return deleteDoc(docRef);
     }
 
-    updateUser(functionality: FunctionalityModel) {
+    updateFunctionality(functionality: FunctionalityModel) {
         let docRef = doc(this.fireStore, `Functionalities/${functionality.key}`);
 
         return updateDoc(docRef, functionality)
     }
 
-    getUsers(): Observable<FunctionalityModel[]> {
+    getFunctionalities(): Observable<FunctionalityModel[]> {
         let functionalitiesRef = collection(this.fireStore, 'Functionalities');
-        const users = collectionData(functionalitiesRef, {idField: 'key'}) as Observable<FunctionalityModel[]>;
-        
-        return users;
+        const functionalities = collectionData(functionalitiesRef, {idField: 'key'}) as Observable<FunctionalityModel[]>;
+
+        return functionalities;
     }
 
     findFunctionalitiesByProjectKey(projectKey: string): Observable<FunctionalityModel[]> {

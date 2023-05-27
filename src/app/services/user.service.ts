@@ -50,4 +50,19 @@ export class UserService {
             })
         );
     }
+
+    getUserById(id: string): Observable<UserModel[]> {
+        const usersRef = collection(this.fireStore, 'Users');
+        const queryRef = query(usersRef, where('id', '==', id));
+    
+        return collectionData<any>(queryRef, { idField: 'id' }).pipe(
+            map((users: UserModel[]) => {
+                if (users.length > 0) {
+                    return [users[0]];
+                } else {
+                    return [];
+                }
+            })
+        );
+    }
 }

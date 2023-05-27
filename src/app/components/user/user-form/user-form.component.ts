@@ -131,8 +131,6 @@ export class UserFormComponent implements OnInit {
     if (role) {
       this.user.role = role
     }
-
-    console.log(this.user);
         
     const respone = await this.userService.addUser(this.user);
     this.router.navigateByUrl(`/users/detail/${respone.id}`);

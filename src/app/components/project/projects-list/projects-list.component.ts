@@ -9,7 +9,7 @@ import { ProjectService } from 'src/app/services/project.service';
   templateUrl: './projects-list.component.html',
   styleUrls: ['./projects-list.component.scss']
 })
-export class ProjectsListComponent implements OnInit{
+export class ProjectsListComponent implements OnInit {
   projects: any
   constructor(private projectService: ProjectService) {}
 

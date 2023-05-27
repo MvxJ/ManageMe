@@ -1,0 +1,118 @@
+@import '../../../../variables.scss';
+
+.functionality-card {
+    width: 100%;
+    border-top: 1px solid $brightGray;
+    border-bottom: 1px solid $brightGray;
+    margin-bottom: 5px;
+    display: flex;
+    height: 50px !important;
+    align-items: center;
+
+    .info {
+        width: 70%;
+        display: flex;
+        align-items: center;
+        
+        .title {
+            width: 25%;
+        }
+
+        .status {
+            width: 10%;
+        }
+
+        .owner {
+            width: 35%;
+            margin-left: 25px;
+            display: flex;
+            align-items: center;
+
+            .owner-avatar {
+                width: 35px;
+                height: 35px;
+                border-radius: 50%;
+                background-color: $lightPurple;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: $white;
+                margin-right: 15px;
+            }
+        }
+
+        .project {
+            width: 25%;
+        }
+    }
+
+    .actions {
+        width: 30%;
+        text-align: right;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        
+        a {
+            text-decoration: none;
+        }
+
+        div {
+            height: 35px;
+            width: 35px;
+            margin: 0px 5px 0px 5px;
+            cursor: pointer;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: $white;
+            font-size: 16px;
+            overflow: hidden;
+            transition: 0.3s ease-in-out;
+
+            span {
+                display: none;
+            }
+
+            &.delete {
+                color: $dangerColor;
+                border: 1px solid $dangerColor;
+
+                &:hover {
+                    background-color: $dangerColor;
+                    color: $white;
+                }
+            }
+
+            &.edit {
+                color: $warningColor;
+                border: 1px solid $warningColor;
+
+                &:hover {
+                    background-color: $warningColor;
+                    color: $white;
+                }
+            }
+
+            &.info {
+                color: $infoColor;
+                border: 1px solid $infoColor;
+
+                &:hover {
+                    background-color: $infoColor;
+                    color: $white;
+                }
+            }
+
+            &:hover {
+                width: 100px;
+                
+                span {
+                    display: block;
+                    margin-right: 5px;
+                }
+            }
+        }
+    }
+}

@@ -1,8 +1,9 @@
 import { Injectable } from "@angular/core";
 import { ProjectModel } from "../models/project.model";
-import { addDoc, updateDoc, deleteDoc, collectionData, doc, Firestore } from '@angular/fire/firestore';
+import { addDoc, updateDoc, deleteDoc, collectionData, doc, Firestore, query, where, getDocs } from '@angular/fire/firestore';
 import { collection } from "@firebase/firestore";
 import { Observable } from "rxjs";
+import { map } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -33,5 +34,20 @@ export class ProjectService {
         const projects = collectionData(projectsRef, {idField: 'key'}) as Observable<ProjectModel[]>;
         
         return projects;
+    }
+
+    getProjectById(id: string): Observable<ProjectModel[]> {
+        const usersRef = collection(this.fireStore, 'Projects');
+        const queryRef = query(usersRef, where('key', '==', id));
+    
+        return collectionData<any>(queryRef, { idField: 'id' }).pipe(
+            map((users: ProjectModel[]) => {
+                if (users.length > 0) {
+                    return [users[0]];
+                } else {
+                    return [];
+                }
+            })
+        );
     }
 }

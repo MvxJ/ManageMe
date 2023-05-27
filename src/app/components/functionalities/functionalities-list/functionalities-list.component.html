@@ -8,5 +8,7 @@
     </div>
 </div>
 <div class="wrapper">
-
+    <div class="list">
+        <app-functionality-card *ngFor="let functionality of functionalities" [functionality]="functionality"></app-functionality-card>
+    </div>
 </div>
