@@ -1,0 +1,39 @@
+<div class="functioanlity-form">
+    <div class="form-wrapper">
+        <div class="action-buttons">
+            <button *ngIf="editorMode" class="button" (click)="addFunctionality()">Create</button>
+            <button *ngIf="!editorMode" class="button" (click)="saveFunctionality()">Save</button>
+        </div>
+        <form>
+            <h3>Functionality details:</h3>
+            <div class="form-row">
+                <div class="form-column">
+                    <label for="name">Title</label>
+                    <input type="text" name="title" placeholder="Functionality Title">
+                </div>
+                <div class="form-column">
+                    <label for="name">Priority</label>
+                    <input type="number" name="title" placeholder="Priority">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-column">
+                    <select name="owner">
+                        <option *ngFor="let user of users" value="{{user.id}}">{{user.name}} {{user.surname}}</option>
+                    </select>
+                </div>
+                <div class="form-column">
+                    <select name="project">
+                        <option *ngFor="let project of projects" value="{{project.key}}">{{project.title}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-column col-100">
+                    <label for="description">Description</label>
+                    <textarea name="description" placeholder="Description" formControlName="description"></textarea>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

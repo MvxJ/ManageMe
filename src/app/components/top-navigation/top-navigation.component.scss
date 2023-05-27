@@ -50,9 +50,23 @@
     }
 
     .actions-container {
-        width: 50px;
+        width: 400px;
         display: flex;
         align-items: center;
         padding-right: 15px;
+        display: flex;
+        justify-content: flex-end;
+
+        .project-select-div {
+            margin-right: 15px;
+            border: 2px solid $darkPurple;
+            border-radius: 5px;
+            color: $lightPurple;
+            cursor: pointer;
+        }
+
+        .logout {
+            cursor: pointer;
+        }
     }
 }

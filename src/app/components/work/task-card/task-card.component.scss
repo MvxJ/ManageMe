@@ -1,0 +1,25 @@
+@import '../../../../variables.scss';
+
+.task {
+    min-width: 400px;
+    height: 125px;
+    border: 2px solid $darkPurple;
+    background-color: $lightPurple;
+    border-radius: 5px;
+    padding: 5px;
+    color: $white;
+    overflow: hidden;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    .task-statistics {
+        display: flex;
+        margin-bottom: 15px;
+
+        div {
+            width: 50%;
+        }
+    }
+}

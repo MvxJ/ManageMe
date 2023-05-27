@@ -19,6 +19,11 @@
         justify-content: center;
         flex-direction: column;
 
+        .error-message {
+            color: $dangerColor;
+            font-size: 11px;
+        }
+
         .form-header {
             display: flex;
             align-items: center;

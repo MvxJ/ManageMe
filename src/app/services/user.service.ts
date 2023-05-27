@@ -1,8 +1,9 @@
 import { Injectable } from "@angular/core";
-import { addDoc, updateDoc, deleteDoc, collectionData, doc, Firestore } from '@angular/fire/firestore';
+import { addDoc, updateDoc, deleteDoc, collectionData, doc, Firestore, query, where, getDocs } from '@angular/fire/firestore';
 import { collection } from "@firebase/firestore";
 import { Observable } from "rxjs";
 import { UserModel } from "../models/user.model";
+import { map } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -33,5 +34,20 @@ export class UserService {
         const users = collectionData(projectsRef, {idField: 'id'}) as Observable<UserModel[]>;
         
         return users;
+    }
+
+    findUser(username: string, password: string): Observable<UserModel[]> {
+        const usersRef = collection(this.fireStore, 'Users');
+        const queryRef = query(usersRef, where('username', '==', username), where('password', '==', password));
+    
+        return collectionData<any>(queryRef, { idField: 'id' }).pipe(
+            map((users: UserModel[]) => {
+                if (users.length > 0) {
+                    return [users[0]];
+                } else {
+                    return [];
+                }
+            })
+        );
     }
 }

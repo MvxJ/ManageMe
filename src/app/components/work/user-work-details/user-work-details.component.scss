@@ -1,0 +1,43 @@
+@import '../../../../variables.scss';
+
+.wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    .work-actions {
+        margin-top: 5px;
+        display: flex;
+        justify-content: flex-end;
+        width: 80%;
+    }
+
+    .khanban-board {
+        width: 80%;
+        min-height: 80vh;
+        height: auto;
+        display: flex;
+        justify-content: space-between;
+        
+
+        .column {
+            width: 30%;
+            height: 100%;
+            border-right: 1px solid $lightGray;
+            border-left: 1px solid $lightGray;
+
+            h3 {
+                text-align: center;
+                font-weight: 400;
+                font-size: 16px;
+            }
+
+            .tasks-wrapper {
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    }
+}
