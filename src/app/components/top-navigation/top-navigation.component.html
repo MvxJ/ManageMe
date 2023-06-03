@@ -19,13 +19,16 @@
                 <a routerLink="functionalities" routerLinkActive="active-link">Functionalities</a>
             </li>
             <li class="link">
+                <a routerLink="tasks" routerLinkActive="active-link">Tasks</a>
+            </li>
+            <li class="link">
                 <a routerLink="work" routerLinkActive="active-link">Work</a>
             </li>
         </ul>
     </div>
     <div class="actions-container">
         <select class="project-select-div" (change)="updateWorkingProject()" id="projectSelectBox">
-            <option *ngFor="let project of projects" value="{{project.key}}">{{ project.title }}</option>
+            <option *ngFor="let project of projects" value="{{project.key}}" [attr.selected]="selectedProjectKey == project.key ? 'selected' : null">{{ project.title }}</option>
         </select>
 
         <img src="assets/logout_image.png" alt="logout_image"  *ngIf="true == true" (click)="logOut()" class="logout">

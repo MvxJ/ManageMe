@@ -1,14 +1,14 @@
-<div class="functioanlity-form">
+<div class="task-form">
     <div class="form-wrapper">
         <div class="action-buttons">
-            <button *ngIf="editorMode" class="button" (click)="addFunctionality()">Create</button>
-            <button *ngIf="!editorMode" class="button" (click)="saveFunctionality()">Save</button>
+            <button *ngIf="editorMode" class="button" (click)="addTask()">Create</button>
+            <button *ngIf="!editorMode" class="button" (click)="saveTask()">Save</button>
         </div>
-        <form [formGroup]="form">
-            <h3>Functionality details:</h3>
+        <form>
+            <h3>Task details:</h3>
             <div class="form-row">
                 <div class="form-column">
-                    <label for="name">Title</label>
+                    <label for="name">Name</label>
                     <input type="text" name="title" placeholder="Functionality Title" formControlName="title">
                 </div>
                 <div class="form-column">
@@ -18,15 +18,24 @@
             </div>
             <div class="form-row">
                 <div class="form-column">
-                    <label>Owner:</label>
-                    <select name="owner" formControlName="owner">
+                    <label>User</label>
+                    <select name="user" formControlName="user">
                         <option *ngFor="let user of users" value="{{user.id}}">{{user.name}} {{user.surname}}</option>
                     </select>
                 </div>
                 <div class="form-column">
-                    <label>Project:</label>
-                    <select name="project" formControlName="project">
-                        <option *ngFor="let project of projects" value="{{project.key}}" [attr.selected]="workingProjectKey == project.key ? 'selected' : null">{{project.title}}</option>
+                    <label>Functionality</label>
+                    <select name="functionality" formControlName="functionality">
+                        <option *ngFor="let functionality of functionalities" value="{{functionality.key}}">{{functionality.title}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row" *ngIf="!editorMode">
+                <div class="form-column">
+                    <label>Status</label>
+                    <select>
+                        <option value="doing">doing</option>
+                        <option value="done">done</option>
                     </select>
                 </div>
             </div>

@@ -1,3 +1,4 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -24,7 +25,7 @@ export class FunctionalityFormComponent {
  
   functionalityKey = null;
   editorMode = false;
-  workingProjectKey = localStorage.getItem("selectedProject");
+  workingProjectKey = '';
   projects: any;
   users: any;
   form!: FormGroup<FunctionalityFormModel>
@@ -49,6 +50,12 @@ export class FunctionalityFormComponent {
       this.users = user;
     });;
 
+    const key = localStorage.getItem("selectedProject")
+    
+    if (key) {
+        this.workingProjectKey = key; 
+    }
+    
     this.form = this.formBuilder.group({
       title: [
         this.functionality ? this.functionality.title : '',
@@ -84,7 +91,34 @@ export class FunctionalityFormComponent {
   }
 
   async saveFunctionality() {
+    const title = this.form.get('title')?.value;;
+    const description = this.form.get('description')?.value;;
+    const owner = this.form.get('owner')?.value;;
+    const project = this.form.get('project')?.value;;
+    const priority = this.form.get('priority')?.value;;
 
+    if (title) {
+      this.functionality.title = title;
+    }
+
+    if (description) {
+      this.functionality.description = description;
+    }
+
+    if (owner) {
+      this.functionality.owner = owner;
+    }
+
+    if (project) {
+      this.functionality.projectKey = project;
+    }
+
+    if (priority) {
+      this.functionality.priority = priority;
+    }
+        
+    this.functionalityService.updateFunctionality(this.functionality);
+    this.router.navigateByUrl(`/functionalities/detail/${this.functionality.key}`);
   }
 
   async addFunctionality() {
@@ -114,7 +148,7 @@ export class FunctionalityFormComponent {
       this.functionality.priority = priority;
     }
 
-    this.functionality.status = 'onhold';
+    this.functionality.status = 'todo';
 
     const respone = await this.functionalityService.addFunctionality(this.functionality);
     this.router.navigateByUrl(`/functionalities/detail/${respone.id}`);

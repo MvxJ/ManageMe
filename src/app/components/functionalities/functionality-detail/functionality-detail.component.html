@@ -1,1 +1,65 @@
-<p>functionality-detail works!</p>
+<div class="functionality-form">
+    <div class="form-wrapper">
+        <div class="action-buttons">
+            <a routerLink="../../edit/{{functionality.key}}" [state]="functionality">
+                <div class="edit">
+                    <span>Edit</span>
+                    <fa-icon [icon]="editIcon"></fa-icon>
+                </div>
+            </a>
+            <div class="delete" (click)="deleteFunctionality()">
+                <span>Delete</span>
+                <fa-icon [icon]="deleteIcon"></fa-icon>
+            </div>
+        </div>
+        <div>
+            <h3>Functionality Description</h3>
+            <div class="form-row">
+                <div class="form-column">
+                    <label>Title</label>
+                    <div>{{functionality.title}}</div>
+                </div>
+                <div class="form-column">
+                    <label>Priority</label>
+                    <div>{{functionality.priority}}</div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-column col-100">
+                    <label>Description</label>
+                    <div>{{functionality.description}}</div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-column">
+                    <label>Project</label>
+                    <div>
+                        <div class="project">
+                            <a routerLink="/projects/detail/{{project?.key}}" routerLinkActive="active-link">{{project?.title}}</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-column">
+                    <label>Owner</label>
+                    <div>
+                        <div class="owner" (click)="navigateToUserPage()">
+                            <div class="owner-avatar">
+                                {{owner?.name?.slice(0,1)?.toUpperCase()}}{{owner?.surname?.slice(0,1)?.toUpperCase()}}
+                            </div>
+                            <div class="owner-details">
+                                {{owner?.name}} {{owner?.surname}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Connected Tasks</h3>
+            <div class="form-row">  
+                <div class="form-column">
+                    <label>Tasks: </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

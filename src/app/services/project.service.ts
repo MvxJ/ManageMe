@@ -31,7 +31,7 @@ export class ProjectService {
 
     getProjects(): Observable<ProjectModel[]> {
         let projectsRef = collection(this.fireStore, 'Projects');
-        const projects = collectionData(projectsRef, {idField: 'key'}) as Observable<ProjectModel[]>;
+        const projects = collectionData(projectsRef, {idField: 'id'}) as Observable<ProjectModel[]>;
         
         return projects;
     }

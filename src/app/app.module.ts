@@ -34,6 +34,11 @@ import { TaskCardComponent } from './components/work/task-card/task-card.compone
 import { FunctionalityFormComponent } from './components/functionalities/functionality-form/functionality-form.component';
 import { FunctionalityDetailComponent } from './components/functionalities/functionality-detail/functionality-detail.component';
 import { FunctionalityCardComponent } from './components/functionalities/functionality-card/functionality-card.component';
+import { TasksDashboardComponent } from './components/tasks/tasks-dashboard/tasks-dashboard.component';
+import { TasksListComponent } from './components/tasks/tasks-list/tasks-list.component';
+import { TaskFormComponent } from './components/tasks/task-form/task-form.component';
+import { TaskDetailComponent } from './components/tasks/task-detail/task-detail.component';
+import { TaskCardLargeComponent } from './components/tasks/task-card-large/task-card-large.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +67,12 @@ import { FunctionalityCardComponent } from './components/functionalities/functio
     TaskCardComponent,
     FunctionalityFormComponent,
     FunctionalityDetailComponent,
-    FunctionalityCardComponent
+    FunctionalityCardComponent,
+    TasksDashboardComponent,
+    TasksListComponent,
+    TaskFormComponent,
+    TaskDetailComponent,
+    TaskCardLargeComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,14 @@
+<div class="wrapper actions">
+    <div class="functionality-actions">
+        <a routerLink="add">
+            <button class="button">
+                Create task
+            </button>
+        </a>
+    </div>
+</div>
+<div class="wrapper">
+    <div class="list">
+        <app-task-card-large *ngFor="let task of tasks" [task]="task"></app-task-card-large>
+    </div>
+</div>

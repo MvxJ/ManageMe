@@ -20,6 +20,8 @@ export class TopNavigationComponent implements OnDestroy {
     private authService: AuthService
   ) {}
 
+    selectedProjectKey: string = '';
+
   async ngOnInit() {
     await this.projectService.getProjects().subscribe((project) => {
       this.projects = project;
@@ -28,6 +30,12 @@ export class TopNavigationComponent implements OnDestroy {
     this.authSubscription = this.authService.isUserLoggedIn.subscribe((loggedIn: boolean) => {
       this.displayNavigation = loggedIn;
     });
+
+    const storageKey = localStorage.getItem("selectedProject");
+    
+    if (storageKey) {
+      this.selectedProjectKey = storageKey;
+    }
   }
 
   ngOnDestroy() {
@@ -49,6 +57,7 @@ export class TopNavigationComponent implements OnDestroy {
     if (selectBox) {
       const projectKey = (<HTMLInputElement>selectBox).value;
       localStorage.setItem('selectedProject', projectKey);
+      window.location.reload();
     }
   }
 }

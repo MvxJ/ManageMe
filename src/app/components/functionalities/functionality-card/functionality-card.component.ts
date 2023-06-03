@@ -7,6 +7,8 @@ import { UserService } from 'src/app/services/user.service';
 import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
+import { FunctionalityService } from 'src/app/services/functionality.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-functionality-card',
@@ -24,7 +26,12 @@ export class FunctionalityCardComponent implements OnInit{
     title: ''
   }
 
-  constructor (private userService: UserService, private projectService: ProjectService) {}
+  constructor (
+    private userService: UserService, 
+    private projectService: ProjectService,
+    private functionalityService: FunctionalityService,
+    private router: Router
+  ) {}
 
   project: ProjectModel|null = null;
   owner: UserModel|null = null;
@@ -52,5 +59,10 @@ export class FunctionalityCardComponent implements OnInit{
         }
       )
     }
+  }
+
+  deleteFunctionality() {
+    this.functionalityService.deleteFunctionality(this.functionality);
+    this.router.navigateByUrl('/functionalities');
   }
 }

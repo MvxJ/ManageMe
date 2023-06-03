@@ -37,13 +37,13 @@ export class FunctionalityService {
     }
 
     findFunctionalitiesByProjectKey(projectKey: string): Observable<FunctionalityModel[]> {
-        const usersRef = collection(this.fireStore, 'Users');
+        const usersRef = collection(this.fireStore, 'Functionalities');
         const queryRef = query(usersRef, where('projectKey', '==', projectKey));
     
-        return collectionData<any>(queryRef, { idField: 'id' }).pipe(
+        return collectionData<any>(queryRef, { idField: 'key' }).pipe(
             map((users: FunctionalityModel[]) => {
                 if (users.length > 0) {
-                    return [users[0]];
+                    return users;
                 } else {
                     return [];
                 }

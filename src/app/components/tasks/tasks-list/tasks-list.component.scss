@@ -1,0 +1,19 @@
+.wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    .functionality-actions {
+        margin-top: 5px;
+        display: flex;
+        justify-content: flex-end;
+        width: 80%;
+    }
+
+    .list {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        margin-top: 5px;
+    }
+}

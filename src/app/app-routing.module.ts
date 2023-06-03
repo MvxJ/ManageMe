@@ -12,6 +12,7 @@ const routes: Routes = [
   { path: 'users', loadChildren: () => import('./modules/users/users.module').then(m => m.UsersModule), canActivate: [AppGuard]},
   { path: 'work', loadChildren: () => import('./modules/work/work.module').then(m => m.WorkModule), canActivate: [AppGuard]},
   { path: 'functionalities', loadChildren: () => import('./modules/functionalities/functionalities.module').then(m => m.FunctionalitiesModule), canActivate: [AppGuard]},
+  { path: "tasks", loadChildren: () => import('./modules/tasks/tasks.module').then(m => m.TasksModule), canActivate: [AppGuard]},
   { path: '**', component: NotFoundComponent },
 ];
 

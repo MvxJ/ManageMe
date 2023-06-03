@@ -14,7 +14,9 @@ export class FunctionalitiesListComponent implements OnInit {
   
   ngOnInit() {
     this.functionalityService.getFunctionalities().subscribe((functionality) => {
-      this.functionalities = functionality;
+      const selectedProjectKey = localStorage.getItem("selectedProject");
+      const results = functionality.filter(functionality => functionality.projectKey == selectedProjectKey);
+      this.functionalities = results;
     });;
   }
 }
