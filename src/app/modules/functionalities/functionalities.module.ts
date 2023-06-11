@@ -5,6 +5,7 @@ import { FunctionalitiesDashboardComponent } from "src/app/components/functional
 import { FunctionalitiesListComponent } from "src/app/components/functionalities/functionalities-list/functionalities-list.component";
 import { FunctionalityDetailComponent } from "src/app/components/functionalities/functionality-detail/functionality-detail.component";
 import { FunctionalityFormComponent } from "src/app/components/functionalities/functionality-form/functionality-form.component";
+import { DevopsGuard } from "src/app/guards/devops.guard";
 
 const routes: Routes = [
   {
@@ -13,8 +14,8 @@ const routes: Routes = [
     children: [
       {path: '', component: FunctionalitiesListComponent},
       {path: 'detail/:id', component: FunctionalityDetailComponent},
-      {path: 'add', component: FunctionalityFormComponent},
-      {path: 'edit/:id', component: FunctionalityFormComponent}
+      {path: 'add', component: FunctionalityFormComponent, canActivate: [DevopsGuard]},
+      {path: 'edit/:id', component: FunctionalityFormComponent, canActivate: [DevopsGuard]}
     ]
   }
 ];

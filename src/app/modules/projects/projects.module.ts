@@ -5,6 +5,7 @@ import { ProjectsListComponent } from 'src/app/components/project/projects-list/
 import { ProjectsDashboardComponent } from 'src/app/components/project/projects-dashboard/projects-dashboard.component';
 import { ProjectDetailComponent } from 'src/app/components/project/project-detail/project-detail.component';
 import { ProjectFormComponent } from 'src/app/components/project/project-form/project-form.component';
+import { DevopsGuard } from 'src/app/guards/devops.guard';
 
 const routes: Routes = [
   {
@@ -13,8 +14,8 @@ const routes: Routes = [
     children: [
       {path: '', component: ProjectsListComponent},
       {path: 'detail/:id', component: ProjectDetailComponent},
-      {path: 'add', component: ProjectFormComponent},
-      {path: 'edit/:id', component: ProjectFormComponent}
+      {path: 'add', component: ProjectFormComponent, canActivate: [DevopsGuard]},
+      {path: 'edit/:id', component: ProjectFormComponent, canActivate: [DevopsGuard]}
     ]
   }
 ];

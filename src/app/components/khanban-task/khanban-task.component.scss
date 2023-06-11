@@ -1,0 +1,63 @@
+@import '../../../variables.scss';
+
+.task {
+    background-color: #f4f4f4;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+  
+  .task-header {
+    margin-bottom: 10px;
+    display: flex;
+    height: 50px;
+    align-items: center;
+
+    .task-name {
+        width: 70%;
+    }
+
+    .status-badge {
+        width: 30%;
+        display: flex;
+        justify-content: flex-end;
+    }
+  }
+
+  .task-details {
+    display: flex;
+    align-items: center;
+
+    .user-container {
+        width: 50%;
+    }
+
+    .priority {
+        width: 50%;
+        text-align: right;
+    }
+  }
+
+  .actions {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    .status {
+        width: 30%;
+        text-align: right;
+    }
+
+    .details {
+        width: 70%;
+        a {
+            text-decoration: none;
+            color: $lightPurple;
+        }
+    }
+  }
+  
+  .task-details p {
+    margin: 5px 0;
+  }

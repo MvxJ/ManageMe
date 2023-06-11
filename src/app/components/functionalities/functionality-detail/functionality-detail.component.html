@@ -1,13 +1,13 @@
 <div class="functionality-form">
     <div class="form-wrapper">
         <div class="action-buttons">
-            <a routerLink="../../edit/{{functionality.key}}" [state]="functionality">
+            <a routerLink="../../edit/{{functionality.key}}" [state]="functionality" *ngIf="displayAction">
                 <div class="edit">
                     <span>Edit</span>
                     <fa-icon [icon]="editIcon"></fa-icon>
                 </div>
             </a>
-            <div class="delete" (click)="deleteFunctionality()">
+            <div class="delete" (click)="deleteFunctionality()" *ngIf="displayAction">
                 <span>Delete</span>
                 <fa-icon [icon]="deleteIcon"></fa-icon>
             </div>
@@ -54,10 +54,11 @@
                 </div>
             </div>
 
-            <h3>Connected Tasks</h3>
+            <h3 *ngIf="tasks.length > 0">Connected Tasks</h3>
             <div class="form-row">  
                 <div class="form-column">
-                    <label>Tasks: </label>
+                    <label *ngIf="tasks.length > 0">Tasks: </label>
+                    <app-task-card-large  *ngFor="let task of tasks" [task]="task"></app-task-card-large>
                 </div>
             </div>
         </div>

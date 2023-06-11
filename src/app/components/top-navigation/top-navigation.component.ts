@@ -21,6 +21,10 @@ export class TopNavigationComponent implements OnDestroy {
   ) {}
 
     selectedProjectKey: string = '';
+    userRole: string = '';
+    roleAdmin = false;
+    roleDevops = false;
+    roleDeveloper = false;
 
   async ngOnInit() {
     await this.projectService.getProjects().subscribe((project) => {
@@ -35,6 +39,25 @@ export class TopNavigationComponent implements OnDestroy {
     
     if (storageKey) {
       this.selectedProjectKey = storageKey;
+    }
+
+    const loggedUser = localStorage.getItem("user");
+
+    if (loggedUser) {
+      const user = JSON.parse(loggedUser);
+      this.userRole = user.role;
+
+      switch (this.userRole) {
+        case 'Admin':
+          this.roleAdmin = true;
+          break;
+        case 'Developer':
+          this.roleDeveloper = true;
+          break;
+        case 'Devops':
+          this.roleDevops = true;
+          break;
+      }
     }
   }
 

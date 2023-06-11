@@ -56,15 +56,11 @@
                     </div>
                 </div>
             </div>
-
-            <h3>Projects: </h3>
-            <div class="form-row">
-
-            </div>
-
             <h3>Assigned tasks: </h3>
             <div class="form-row">
-
+                <div class="form-column">
+                    <app-task-card-large *ngFor="let task of tasks"[task]="task"></app-task-card-large>
+                </div>
             </div>
         </div>
     </div>

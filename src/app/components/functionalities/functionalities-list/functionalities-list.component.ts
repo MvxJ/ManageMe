@@ -11,6 +11,7 @@ import { ProjectService } from 'src/app/services/project.service';
 export class FunctionalitiesListComponent implements OnInit {
   constructor(private functionalityService: FunctionalityService) {}
   functionalities: Array<FunctionalityModel> = [];
+  displayAction = false;
   
   ngOnInit() {
     this.functionalityService.getFunctionalities().subscribe((functionality) => {
@@ -18,5 +19,13 @@ export class FunctionalitiesListComponent implements OnInit {
       const results = functionality.filter(functionality => functionality.projectKey == selectedProjectKey);
       this.functionalities = results;
     });;
+
+    const localUser = localStorage.getItem("user");
+
+    if (localUser) {
+      const user = JSON.parse(localUser);
+
+      this.displayAction ?? user.role == 'devops';
+    }
   }
 }

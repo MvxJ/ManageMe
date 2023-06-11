@@ -1,0 +1,22 @@
+@import '../../../variables.scss';
+
+.user-feature {
+    display: flex;
+    align-items: center;
+
+    .user-circle {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        background-color: $lightPurple;
+        color: $white;
+        display: flex;
+        align-items: center;
+        justify-content: center ;
+    }
+
+    .user-detail {
+        margin-left: 15px;
+        color: $black;
+    }
+}

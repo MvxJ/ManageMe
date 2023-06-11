@@ -1,14 +1,11 @@
 <div class="functionality-card">
     <div class="info">
         <div class="title">{{functionality.title}}</div>
-        <div class="status">{{functionality.status}}</div>
         <div class="owner">
-            <div class="owner-avatar">
-                {{owner?.name?.slice(0,1)?.toUpperCase()}}{{owner?.surname?.slice(0,1)?.toUpperCase()}}
-            </div>
-            <div class="owner-details">
-                {{owner?.name}} {{owner?.surname}}
-            </div>
+            <app-user-feature *ngIf="owner" [user]="owner"></app-user-feature>
+        </div>
+        <div class="status">
+            <app-status-badge [status]="functionality.status"></app-status-badge>
         </div>
         <div class="project-name">
             {{project?.title}}
@@ -21,13 +18,13 @@
                 <fa-icon [icon]="infoIcon"></fa-icon>
             </div>
         </a>
-        <a routerLink="edit/{{functionality.key}}" [state]="functionality">
+        <a routerLink="edit/{{functionality.key}}" [state]="functionality" *ngIf="displayAciotns">
             <div class="edit">
                 <span>Edit</span>
                 <fa-icon [icon]="editIcon"></fa-icon>
             </div>
         </a>
-        <div class="delete" (click)="deleteFunctionality()">
+        <div class="delete" (click)="deleteFunctionality()" *ngIf="displayAciotns">
             <span>Delete</span>
             <fa-icon [icon]="deleteIcon"></fa-icon>
         </div>

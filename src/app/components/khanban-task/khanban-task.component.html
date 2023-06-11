@@ -1,0 +1,38 @@
+<div class="task">
+    <div class="task-header">
+        <div class="task-name">
+            <h4>{{ task?.name }}</h4>
+        </div>
+        <div class="status-badge">
+            <app-status-badge [status]="task.status"></app-status-badge>
+        </div>
+    </div>
+    <div class="task-details">
+        <div class="user-container">
+            <app-user-feature *ngIf="user" [user]="user"></app-user-feature>
+        </div>
+        <div class="priority">
+            <p><strong>Priority:</strong> {{ task?.priority }}</p>
+        </div>
+    </div>
+    <div class="actions">
+        <div class="details">
+            <a routerLink="/tasks/detail/{{task.key}}">
+                Check details
+            </a>
+        </div>
+        <div class="status">
+            <select [(ngModel)]="task.status" (change)="onTaskStatusChange()" *ngIf="task.status != 'done'">
+                <option value="doing" [selected]="task.status === 'doing'">
+                    Working
+                </option>
+                <option value="onhold" [selected]="task.status === 'onhold'">
+                    Waiting
+                </option>
+                <option value="done" [selected]="task.status === 'done'">
+                    Done
+                </option>
+            </select>
+        </div>
+    </div>
+  </div>

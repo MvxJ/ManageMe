@@ -1,0 +1,118 @@
+@import '../../../../variables.scss';
+
+.task-card-large {
+    display: flex;
+    border-top: 1px solid $brightGray;
+    border-bottom: 1px solid $brightGray;
+    margin: 5px 5px 5px 5px;
+
+    .info {
+        display: flex;
+        height: 45px;
+        align-items: center;
+        width: 70%;
+
+        .task-name {
+            width: 40%;
+        }
+
+        .user-detail {
+            width: 30%;
+        }
+
+        .status {
+            width: 30%;
+        }
+
+        .icon {
+            height: 35px;
+            width: 35px;
+            background-color: $lightPurple;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: $white;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+    
+        .display-name {
+            min-width: 200px;
+            width: auto;
+        }
+
+        .roles {
+            font-weight: 100;
+        }
+    }
+
+    .actions {
+        width: 30%;
+        text-align: right;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        
+        a {
+            text-decoration: none;
+        }
+
+        div {
+            height: 35px;
+            width: 35px;
+            margin: 0px 5px 0px 5px;
+            cursor: pointer;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: $white;
+            font-size: 16px;
+            overflow: hidden;
+            transition: 0.3s ease-in-out;
+
+            span {
+                display: none;
+            }
+
+            &.delete {
+                color: $dangerColor;
+                border: 1px solid $dangerColor;
+
+                &:hover {
+                    background-color: $dangerColor;
+                    color: $white;
+                }
+            }
+
+            &.edit {
+                color: $warningColor;
+                border: 1px solid $warningColor;
+
+                &:hover {
+                    background-color: $warningColor;
+                    color: $white;
+                }
+            }
+
+            &.info {
+                color: $infoColor;
+                border: 1px solid $infoColor;
+
+                &:hover {
+                    background-color: $infoColor;
+                    color: $white;
+                }
+            }
+
+            &:hover {
+                width: 100px;
+                
+                span {
+                    display: block;
+                    margin-right: 5px;
+                }
+            }
+        }
+    }
+}

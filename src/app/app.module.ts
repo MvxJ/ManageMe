@@ -26,11 +26,8 @@ import { ProjectCardComponent } from './components/project/project-card/project-
 import { ProjectDetailComponent } from './components/project/project-detail/project-detail.component';
 import { UserFormComponent } from './components/user/user-form/user-form.component';
 import { ProjectFormComponent } from './components/project/project-form/project-form.component';
-import { WorkDashboardComponent } from './components/work/work-dashboard/work-dashboard.component';
-import { UserWorkDetailsComponent } from './components/work/user-work-details/user-work-details.component';
 import { FunctionalitiesDashboardComponent } from './components/functionalities/functionalities-dashboard/functionalities-dashboard.component';
 import { FunctionalitiesListComponent } from './components/functionalities/functionalities-list/functionalities-list.component';
-import { TaskCardComponent } from './components/work/task-card/task-card.component';
 import { FunctionalityFormComponent } from './components/functionalities/functionality-form/functionality-form.component';
 import { FunctionalityDetailComponent } from './components/functionalities/functionality-detail/functionality-detail.component';
 import { FunctionalityCardComponent } from './components/functionalities/functionality-card/functionality-card.component';
@@ -39,6 +36,14 @@ import { TasksListComponent } from './components/tasks/tasks-list/tasks-list.com
 import { TaskFormComponent } from './components/tasks/task-form/task-form.component';
 import { TaskDetailComponent } from './components/tasks/task-detail/task-detail.component';
 import { TaskCardLargeComponent } from './components/tasks/task-card-large/task-card-large.component';
+import { UserFeatureComponent } from './components/user-feature/user-feature.component';
+import { StatusBadgeComponent } from './components/status-badge/status-badge.component';
+import { KhanbanBoardComponent } from './components/khanban-board/khanban-board.component';
+import { KhanbanTaskComponent } from './components/khanban-task/khanban-task.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DatePipe } from '@angular/common';
+
 
 @NgModule({
   declarations: [
@@ -60,11 +65,8 @@ import { TaskCardLargeComponent } from './components/tasks/task-card-large/task-
     ProjectDetailComponent,
     UserFormComponent,
     ProjectFormComponent,
-    WorkDashboardComponent,
-    UserWorkDetailsComponent,
     FunctionalitiesDashboardComponent,
     FunctionalitiesListComponent,
-    TaskCardComponent,
     FunctionalityFormComponent,
     FunctionalityDetailComponent,
     FunctionalityCardComponent,
@@ -72,7 +74,11 @@ import { TaskCardLargeComponent } from './components/tasks/task-card-large/task-
     TasksListComponent,
     TaskFormComponent,
     TaskDetailComponent,
-    TaskCardLargeComponent
+    TaskCardLargeComponent,
+    UserFeatureComponent,
+    StatusBadgeComponent,
+    KhanbanBoardComponent,
+    KhanbanTaskComponent,
   ],
   imports: [
     BrowserModule,
@@ -82,9 +88,11 @@ import { TaskCardLargeComponent } from './components/tasks/task-card-large/task-
     AngularFireAuthModule,
     FormsModule,
     ReactiveFormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

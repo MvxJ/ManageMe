@@ -4,39 +4,45 @@
             <button *ngIf="editorMode" class="button" (click)="addTask()">Create</button>
             <button *ngIf="!editorMode" class="button" (click)="saveTask()">Save</button>
         </div>
-        <form>
+        <form [formGroup]="form">
             <h3>Task details:</h3>
             <div class="form-row">
                 <div class="form-column">
                     <label for="name">Name</label>
-                    <input type="text" name="title" placeholder="Functionality Title" formControlName="title">
+                    <input type="text" name="name" placeholder="Task Name" formControlName="name">
                 </div>
                 <div class="form-column">
-                    <label for="name">Priority</label>
-                    <input type="number" name="title" placeholder="Priority" formControlName="priority">
+                    <label for="priority">Priority</label>
+                    <input type="number" name="priority" placeholder="Priority" formControlName="priority" name="priority">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-column">
                     <label>User</label>
-                    <select name="user" formControlName="user">
+                    <select name="userKey" formControlName="userKey">
                         <option *ngFor="let user of users" value="{{user.id}}">{{user.name}} {{user.surname}}</option>
                     </select>
                 </div>
                 <div class="form-column">
                     <label>Functionality</label>
-                    <select name="functionality" formControlName="functionality">
+                    <select name="functionalityKey" formControlName="functionalityKey">
                         <option *ngFor="let functionality of functionalities" value="{{functionality.key}}">{{functionality.title}}</option>
                     </select>
                 </div>
             </div>
             <div class="form-row" *ngIf="!editorMode">
-                <div class="form-column">
+                <div class="form-column" *ngIf="task.status != 'done'">
                     <label>Status</label>
-                    <select>
+                    <select formControlName="status" name="status">
                         <option value="doing">doing</option>
                         <option value="done">done</option>
                     </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-column">
+                    <label>Time to done:</label>
+                    <input type="text" name="timeToDone" formControlName="timeToDone">
                 </div>
             </div>
             <div class="form-row">

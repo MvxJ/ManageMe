@@ -9,7 +9,7 @@
             <li class="link">
                 <a routerLink="" routerLinkActive="active-link">Home</a>
             </li>
-            <li class="link">
+            <li class="link" *ngIf="roleAdmin">
                 <a routerLink="users" routerLinkActive="active-link">Users</a>
             </li>
             <li class="link">
@@ -22,7 +22,7 @@
                 <a routerLink="tasks" routerLinkActive="active-link">Tasks</a>
             </li>
             <li class="link">
-                <a routerLink="work" routerLinkActive="active-link">Work</a>
+                <a routerLink="khanban" routerLinkActive="active-link">Khanban</a>
             </li>
         </ul>
     </div>

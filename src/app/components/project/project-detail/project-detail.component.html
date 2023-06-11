@@ -1,13 +1,13 @@
 <div class="project-form">
     <div class="form-wrapper">
         <div class="action-buttons">
-            <a routerLink="../../edit/{{project.key}}" [state]="project">
+            <a routerLink="../../edit/{{project.key}}" [state]="project" *ngIf="displayAction">
                 <div class="edit">
                     <span>Edit</span>
                     <fa-icon [icon]="editIcon"></fa-icon>
                 </div>
             </a>
-            <div class="delete" (click)="deleteProject()">
+            <div class="delete" (click)="deleteProject()" *ngIf="displayAction">
                 <span>Delete</span>
                 <fa-icon [icon]="deleteIcon"></fa-icon>
             </div>
@@ -37,8 +37,8 @@
                                 <div class="title">
                                     {{functionality.title}}
                                 </div>
-                                <div class="status">
-                                    {{functionality.status}}
+                                <div>
+                                    <app-status-badge [status]="functionality.status"></app-status-badge>
                                 </div>
                             </div>
                         </a>

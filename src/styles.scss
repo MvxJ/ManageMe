@@ -7,3 +7,8 @@ body {
     font-family: 'Open Sans', sans-serif;
     background-color: $brightGray;
 }
+
+.toast-red {
+    background-color: red !important;
+    color: white !important;
+  }

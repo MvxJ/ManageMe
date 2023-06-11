@@ -1,0 +1,32 @@
+<div class="card user-card">
+    <div class="card-header">
+        <app-back-button></app-back-button>
+        <span class="card-title" id="userCardTitle">Khanban</span>
+        <div class="card-actions">
+        </div>
+    </div>
+    <div class="router-outlet">
+        <div class="content-wrapper">
+            <div class="kanban-board">
+                <div class="column" id="column-todo">
+                  <h3>To Do</h3>
+                  <div class="tasks">
+                    <app-khanban-task *ngFor="let task of todo" [task]="task"></app-khanban-task>
+                  </div>
+                </div>
+                <div class="column" id="column-doing">
+                  <h3>Doing</h3>
+                  <div class="tasks">
+                    <app-khanban-task *ngFor="let task of doing" [task]="task"></app-khanban-task>
+                  </div>
+                </div>
+                <div class="column" id="column-done">
+                  <h3>Done</h3>
+                  <div class="tasks">
+                    <app-khanban-task *ngFor="let task of done" [task]="task"></app-khanban-task>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+</div>

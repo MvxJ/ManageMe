@@ -38,6 +38,7 @@ export class FunctionalityCardComponent implements OnInit{
   infoIcon = faCircleInfo;
   editIcon = faEdit;
   deleteIcon = faTrash;
+  displayAciotns = false;
 
   ngOnInit() {
     if (this.functionality?.owner) {
@@ -58,6 +59,17 @@ export class FunctionalityCardComponent implements OnInit{
           }
         }
       )
+    }
+
+    const localUser = localStorage.getItem("user");
+
+    if (localUser) {
+      const user = JSON.parse(localUser);
+      if (user.roles == 'devops') {
+        this.displayAciotns = true;
+      } else {
+        this.displayAciotns = false;
+      }
     }
   }
 

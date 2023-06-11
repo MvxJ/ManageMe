@@ -5,16 +5,19 @@ import { FunctionalityService } from 'src/app/services/functionality.service';
 import { TaskService } from 'src/app/services/task.service';
 
 @Component({
-  selector: 'app-tasks-list',
-  templateUrl: './tasks-list.component.html',
-  styleUrls: ['./tasks-list.component.scss']
+  selector: 'app-khanban-board',
+  templateUrl: './khanban-board.component.html',
+  styleUrls: ['./khanban-board.component.scss']
 })
-export class TasksListComponent implements OnInit {
+export class KhanbanBoardComponent implements OnInit {
+  tasks: TaskModel[] = [];
+  todo: TaskModel[] = [];
+  doing: TaskModel[] = [];
+  done: TaskModel[] = [];
   projectKey: string|null = '';
-  functionalities: Array<FunctionalityModel> = [];
-  tasks: Array<TaskModel> = [];
+  functionalities: FunctionalityModel[] = [];
 
-  constructor (private functionalityService: FunctionalityService, private taskService: TaskService) {}
+  constructor(private taskService: TaskService, private functionalityService: FunctionalityService) {}
 
   async ngOnInit() {
     this.projectKey = localStorage.getItem("selectedProject");
@@ -22,11 +25,15 @@ export class TasksListComponent implements OnInit {
     if (this.projectKey) {
       await this.functionalityService.findFunctionalitiesByProjectKey(this.projectKey).subscribe((functionalities) => {
         this.functionalities = functionalities;
+        console.log(functionalities)
         
-        if (functionalities) {
+        if (functionalities.length > 0) {
           functionalities.forEach(functionality => {
             this.taskService.getTasksByFuncitonalityKey(functionality.key).subscribe((tasks) => {
-              this.tasks = [...this.tasks, ...tasks];            
+              this.tasks.push(...tasks);
+              this.todo.push(...tasks.filter(task => task.status === 'onhold'));
+              this.doing.push(...tasks.filter(task => task.status === 'doing'));
+              this.done.push(...tasks.filter(task => task.status === 'done'));
             })
           });
         }

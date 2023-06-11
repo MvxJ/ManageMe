@@ -6,6 +6,8 @@ import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { UserService } from 'src/app/services/user.service';
+import { TaskService } from 'src/app/services/task.service';
+import { TaskModel } from 'src/app/models/task.model';
 
 @Component({
   selector: 'app-user-detail',
@@ -16,7 +18,8 @@ export class UserDetailComponent {
   constructor(
     private route: ActivatedRoute, 
     private usersSerice: UserService,
-    private router: Router
+    private router: Router,
+    private taskService: TaskService
   ) {}
   users: any
   key: string|null = null;
@@ -34,13 +37,22 @@ export class UserDetailComponent {
   inputPasswordType: string = 'password';
   showPasswordIcon = faEye;
   hidePasswordIcon = faEyeSlash;
+  tasks: Array<TaskModel> = [];
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id')
     const users = this.usersSerice.getUsers().subscribe(users => {
       const result = users.filter(user => user.id == id)
       this.user = result[0];
-    })    
+    })
+
+    if (id) {
+      this.taskService.getUserTasks(id).subscribe((userTasks) => {
+        this.tasks = userTasks;
+      })
+    }
+
+    console.log(this.tasks);
   }
 
   toggleVisiblity() {

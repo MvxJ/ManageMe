@@ -30,6 +30,7 @@ export class ProjectDetailComponent {
   editIcon = faEdit;
   deleteIcon = faTrash;
   functionalities: Array<FunctionalityModel>|null = [];
+  displayAction = false;
 
   ngOnInit() {
       const projectKey = this.route.snapshot.params['id'];
@@ -41,6 +42,14 @@ export class ProjectDetailComponent {
           this.functionalities = functionalities;
         })
       })
+
+      const localUser = localStorage.getItem("user");
+
+      if (localUser) {
+        const user = JSON.parse(localUser);
+  
+        this.displayAction ?? user.role == 'devops';
+      }
   }
 
   deleteProject() {

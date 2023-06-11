@@ -11,11 +11,20 @@ import { ProjectService } from 'src/app/services/project.service';
 })
 export class ProjectsListComponent implements OnInit {
   projects: any
+  displayAction = false;
   constructor(private projectService: ProjectService) {}
 
   ngOnInit() {
     this.projectService.getProjects().subscribe((project) => {
       this.projects = project;
-   });;
+    });;
+    
+    const localUser = localStorage.getItem("user");
+
+    if (localUser) {
+      const user = JSON.parse(localUser);
+
+      this.displayAction ?? user.role == 'devops';
+    }
   }
 }

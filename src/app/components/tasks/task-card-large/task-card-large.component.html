@@ -1,1 +1,31 @@
-<p>task-card-large works!</p>
+<div class="task-card-large">
+    <div class="info">
+        <div class="task-name">
+            {{task.name}}
+        </div>
+        <div class="user-detail">
+            <app-user-feature *ngIf="user" [user]="user"></app-user-feature>
+        </div>
+        <div class="task-status">
+            <app-status-badge [status]="task.status"></app-status-badge>
+        </div>
+    </div>
+    <div class="actions">
+        <a routerLink='/tasks/detail/{{task.key}}'>
+            <div class="info">
+                <span>Detail</span>
+                <fa-icon [icon]="infoIcon"></fa-icon>
+            </div>
+        </a>
+        <a routerLink="/tasks/edit/{{task.key}}" [state]="task" *ngIf="task.status != 'done'">
+            <div class="edit">
+                <span>Edit</span>
+                <fa-icon [icon]="editIcon"></fa-icon>
+            </div>
+        </a>
+        <div class="delete" (click)="deleteTask()" *ngIf="task.status != 'done'">
+            <span>Delete</span>
+            <fa-icon [icon]="deleteIcon"></fa-icon>
+        </div>
+    </div>
+</div>

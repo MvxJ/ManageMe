@@ -31,19 +31,49 @@ export class TaskService {
 
     getTasks(): Observable<TaskModel[]> {
         let tasksRef = collection(this.fireStore, 'Tasks');
-        const projects = collectionData(tasksRef, {idField: 'id'}) as Observable<TaskModel[]>;
+        const tasks = collectionData(tasksRef, {idField: 'key'}) as Observable<TaskModel[]>;
         
-        return projects;
+        return tasks;
     }
 
     getTasksByFuncitonalityKey(key: string): Observable<TaskModel[]> {
         const usersRef = collection(this.fireStore, 'Tasks');
         const queryRef = query(usersRef, where('functionalityKey', '==', key));
     
-        return collectionData<any>(queryRef, { idField: 'id' }).pipe(
+        return collectionData<any>(queryRef, { idField: 'key' }).pipe(
             map((tasks: TaskModel[]) => {
                 if (tasks.length > 0) {
                     return tasks;
+                } else {
+                    return [];
+                }
+            })
+        );
+    }
+    
+    getUserTasks(userKey: string): Observable<TaskModel[]> {
+        const usersRef = collection(this.fireStore, 'Tasks');
+        const queryRef = query(usersRef, where('userKey', '==', userKey));
+    
+        return collectionData<any>(queryRef, { idField: 'key' }).pipe(
+            map((tasks: TaskModel[]) => {
+                if (tasks.length > 0) {
+                    return tasks;
+                } else {
+                    return [];
+                }
+            })
+        );
+    }
+
+    getTaskByKey(key: string): Observable<TaskModel[]> {
+        const tasksRef = collection(this.fireStore, 'Tasks');
+        const queryRef = query(tasksRef, where('key', '==', key));
+    
+        return collectionData<any>(queryRef, { idField: 'key' }).pipe(
+            map((tasks: TaskModel[]) => {
+                if (tasks.length > 0) {
+                    return [tasks[0]];
                 } else {
                     return [];
                 }
