@@ -50,6 +50,21 @@ export class TaskService {
             })
         );
     }
+
+    getTasksByProjectKey(key: string): Observable<TaskModel[]> {
+        const usersRef = collection(this.fireStore, 'Tasks');
+        const queryRef = query(usersRef, where('projectKey', '==', key));
+    
+        return collectionData<any>(queryRef, { idField: 'key' }).pipe(
+            map((tasks: TaskModel[]) => {
+                if (tasks.length > 0) {
+                    return tasks;
+                } else {
+                    return [];
+                }
+            })
+        );
+    }
     
     getUserTasks(userKey: string): Observable<TaskModel[]> {
         const usersRef = collection(this.fireStore, 'Tasks');

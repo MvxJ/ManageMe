@@ -12,12 +12,18 @@ export class FunctionalitiesListComponent implements OnInit {
   constructor(private functionalityService: FunctionalityService) {}
   functionalities: Array<FunctionalityModel> = [];
   displayAction = false;
-  
+  waitingFunctionalities: Array<FunctionalityModel> = [];
+  doingFunctionalities: Array<FunctionalityModel> = [];
+  doneFunctionalities: Array<FunctionalityModel> = [];
+
   ngOnInit() {
     this.functionalityService.getFunctionalities().subscribe((functionality) => {
       const selectedProjectKey = localStorage.getItem("selectedProject");
       const results = functionality.filter(functionality => functionality.projectKey == selectedProjectKey);
       this.functionalities = results;
+      this.doneFunctionalities = this.functionalities.filter(functionality => functionality.status == 'done');
+      this.doingFunctionalities = this.functionalities.filter(functionality => functionality.status == 'doing');
+      this.waitingFunctionalities = this.functionalities.filter(functionality => functionality.status == 'onhold');
     });;
 
     const localUser = localStorage.getItem("user");

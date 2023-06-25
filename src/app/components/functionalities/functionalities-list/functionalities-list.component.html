@@ -9,6 +9,17 @@
 </div>
 <div class="wrapper">
     <div class="list">
-        <app-functionality-card *ngFor="let functionality of functionalities" [functionality]="functionality"></app-functionality-card>
+        <div *ngIf="waitingFunctionalities.length > 0" class="functionalities-conatainer">
+            <label>Waiting</label>
+            <app-functionality-card *ngFor="let functionality of waitingFunctionalities" [functionality]="functionality"></app-functionality-card>
+        </div>
+        <div *ngIf="doingFunctionalities.length > 0"  class="functionalities-conatainer">
+            <label>Doing</label>
+            <app-functionality-card *ngFor="let functionality of doingFunctionalities" [functionality]="functionality"></app-functionality-card>
+        </div>
+        <div *ngIf="doneFunctionalities.length > 0"  class="functionalities-conatainer">
+            <label>Done</label>
+            <app-functionality-card *ngFor="let functionality of doneFunctionalities" [functionality]="functionality"></app-functionality-card>
+        </div>
     </div>
 </div>

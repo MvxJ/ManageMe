@@ -6,6 +6,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectService } from 'src/app/services/project.service';
 import { FunctionalityService } from 'src/app/services/functionality.service';
 import { FunctionalityModel } from 'src/app/models/functionality.model';
+import { TaskModel } from 'src/app/models/task.model';
+import { TaskService } from 'src/app/services/task.service';
 
 @Component({
   selector: 'app-project-detail',
@@ -17,7 +19,8 @@ export class ProjectDetailComponent {
     private route: ActivatedRoute, 
     private projectService: ProjectService, 
     private router: Router,
-    private functionalityService: FunctionalityService
+    private functionalityService: FunctionalityService,
+    private taskService: TaskService
   ) {
 
   }
@@ -31,6 +34,9 @@ export class ProjectDetailComponent {
   deleteIcon = faTrash;
   functionalities: Array<FunctionalityModel>|null = [];
   displayAction = false;
+  tasks: Array<TaskModel>|null = [];
+  timeToDone: number = 0;
+  doneTime: number = 0;
 
   ngOnInit() {
       const projectKey = this.route.snapshot.params['id'];
@@ -41,6 +47,22 @@ export class ProjectDetailComponent {
         this.functionalityService.findFunctionalitiesByProjectKey(projectKey).subscribe(functionalities => {
           this.functionalities = functionalities;
         })
+
+        if (this.project) {
+          this.taskService.getTasksByProjectKey(this.project.key).subscribe(tasks => {
+            this.tasks = tasks;
+            const doneTasks = tasks.filter(task => task.status ==  'done');
+            const notFinishedTasks = tasks.filter(task => task.status == 'onhold' || task.status == 'doing');
+  
+            doneTasks.forEach(tasks => {
+              this.doneTime += tasks.timeToDone;
+            });
+  
+            notFinishedTasks.forEach(task => {
+              this.timeToDone += task.timeToDone;
+            });
+          })
+        }
       })
 
       const localUser = localStorage.getItem("user");
@@ -50,6 +72,7 @@ export class ProjectDetailComponent {
   
         this.displayAction ?? user.role == 'devops';
       }
+
   }
 
   deleteProject() {

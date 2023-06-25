@@ -10,7 +10,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./khanban-task.component.scss']
 })
 export class KhanbanTaskComponent implements OnInit {
-  @Input() task: TaskModel = { createdAt: new Date, description: '', finishedAt: null, functionalityKey: '', key: '', name: '', priority: '', status: '', timeToDone: 0, userKey: '' };
+  @Input() task: TaskModel = { createdAt: new Date, description: '', finishedAt: null, functionalityKey: '', projectKey: '', key: '', name: '', priority: '', status: '', timeToDone: 0, userKey: '' };
   user: UserModel | null = null;
 
   constructor(private userService: UserService, private taskService: TaskService) {}
@@ -25,13 +25,13 @@ export class KhanbanTaskComponent implements OnInit {
   }
 
   async onTaskStatusChange() {
+    console.log('test');
     try {
       if (this.task.status == 'done') {
         this.task.finishedAt = new Date();
       }
       
       await this.taskService.updateTask(this.task);
-      window.location.reload();
     } catch (error) {
       console.error('Failed to update task status:', error);
       // Handle the error

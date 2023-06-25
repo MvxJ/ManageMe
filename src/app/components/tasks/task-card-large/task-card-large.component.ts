@@ -24,7 +24,8 @@ export class TaskCardLargeComponent implements OnInit {
     priority: '',
     status: '',
     timeToDone: 0,
-    userKey: ''
+    userKey: '',
+    projectKey: ''
   };
 
   constructor (

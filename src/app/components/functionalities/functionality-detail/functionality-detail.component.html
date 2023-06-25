@@ -15,6 +15,14 @@
         <div>
             <h3>Functionality Description</h3>
             <div class="form-row">
+                <div class="form-column col-100">
+                    <label>Status</label>
+                    <div class="status">
+                        <app-status-badge [status]="functionality.status"></app-status-badge>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
                 <div class="form-column">
                     <label>Title</label>
                     <div>{{functionality.title}}</div>

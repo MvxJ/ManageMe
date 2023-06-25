@@ -15,6 +15,7 @@ export class AuthService {
 
   setUserLoggedIn(loggedIn: boolean) {
     this.loggedInSubject.next(loggedIn);
+    console.log(loggedIn);
   }
 
   checkUserLoggedIn() {

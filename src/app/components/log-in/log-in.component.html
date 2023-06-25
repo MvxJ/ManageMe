@@ -1,5 +1,5 @@
 <div class="log-in-form">
-    <form [formGroup]="form" class="form-container">
+    <form [formGroup]="form" class="form-container" *ngIf="loginForm">
         <div class="form-header">
             <img src="assets/logo_64.png" alt="logo"><h3>ManageMe!</h3>
         </div>
@@ -14,6 +14,39 @@
         <div>
             <button (click)="logIn()" class="button">Log In</button>
         </div>
+        <p (click)="changeForm()"  class="button-text">You dont have an account? Register</p>
+        <p class="error-message">
+            {{errorMessage}}
+        </p>
+    </form>
+    <form [formGroup]="registerForm" class="form-container" *ngIf="loginForm == false">
+        <div class="form-header">
+            <img src="assets/logo_64.png" alt="logo"><h3>ManageMe!</h3>
+        </div>
+        <div class="form-row">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" formControlName="name" placeholder="name">
+        </div>
+        <div class="form-row">
+            <label for="surname">Surname</label>
+            <input type="text" id="surname" name="surname" formControlName="surname" placeholder="surname">
+        </div>
+        <div class="form-row">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" formControlName="username" placeholder="john@doe.com">
+        </div>
+        <div class="form-row">
+            <label for="username">Password</label>
+            <input type="password" id="password" name="password" formControlName="password" placeholder="password">
+        </div>
+        <div class="form-row">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" formControlName="confirmPassword" placeholder="confirm password">
+        </div>
+        <div>
+            <button (click)="register()" class="button">Register</button>
+        </div>
+        <p (click)="changeForm()" class="button-text">Already have an account? Login</p>
         <p class="error-message">
             {{errorMessage}}
         </p>

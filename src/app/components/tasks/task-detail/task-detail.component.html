@@ -63,6 +63,16 @@
                 </div>
             </div>
             <div class="form-row">
+                <div class="form-column">
+                    <label>Project</label>
+                    <div class="funtionality-link">
+                        <a routerLink="/projects/detail/{{task.functionalityKey}}">
+                            {{project?.title}}
+                        </a>     
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
                 <div class="form-column col-100">
                     <label for="name">Description</label>
                     <div>{{ task.description }}</div>

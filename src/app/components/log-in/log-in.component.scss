@@ -12,7 +12,9 @@
         border-radius: 5px;
         padding: 5px;
         box-shadow: $shadow;
-        height: 400px;
+        min-height: 400px;
+        padding-top: 15px;
+        height: auto;
         width: 600px;
         display: flex;
         align-items: center;
@@ -43,5 +45,10 @@
         .button {
             margin-top: 20px;
         }
+    }
+
+    .button-text {
+        font-size: 11px;
+        cursor: pointer;
     }
 }

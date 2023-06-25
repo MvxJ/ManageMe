@@ -8,5 +8,6 @@ export type TaskModel = {
     status: string,
     createdAt: Date,
     finishedAt: Date|null,
-    userKey: string
+    userKey: string,
+    projectKey: string
 }

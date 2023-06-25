@@ -19,18 +19,12 @@ export class TasksListComponent implements OnInit {
   async ngOnInit() {
     this.projectKey = localStorage.getItem("selectedProject");
 
+    this.projectKey = localStorage.getItem("selectedProject");
+
     if (this.projectKey) {
-      await this.functionalityService.findFunctionalitiesByProjectKey(this.projectKey).subscribe((functionalities) => {
-        this.functionalities = functionalities;
-        
-        if (functionalities) {
-          functionalities.forEach(functionality => {
-            this.taskService.getTasksByFuncitonalityKey(functionality.key).subscribe((tasks) => {
-              this.tasks = [...this.tasks, ...tasks];            
-            })
-          });
-        }
-      })
+      this.taskService.getTasksByProjectKey(this.projectKey).subscribe((tasks) => {
+        this.tasks = tasks;
+      });
     }
   }
 }

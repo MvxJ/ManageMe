@@ -9,6 +9,8 @@ import { UserService } from 'src/app/services/user.service';
 import { FunctionalityService } from 'src/app/services/functionality.service';
 import { FunctionalityModel } from 'src/app/models/functionality.model';
 import { DatePipe } from '@angular/common';
+import { ProjectService } from 'src/app/services/project.service';
+import { ProjectModel } from 'src/app/models/project.model';
 
 @Component({
   selector: 'app-task-detail',
@@ -26,7 +28,8 @@ export class TaskDetailComponent implements OnInit{
     priority: '',
     status: '',
     timeToDone: 0,
-    userKey: ''
+    userKey: '',
+    projectKey: ''
   }
   editIcon = faEdit;
   deleteIcon = faTrash;
@@ -34,6 +37,7 @@ export class TaskDetailComponent implements OnInit{
   functionality: FunctionalityModel|null = null;
   createdDate: string|null = '';
   finishedDate: string|null = '';
+  project: ProjectModel|null = null;
 
   constructor (
     private taskService: TaskService, 
@@ -41,7 +45,8 @@ export class TaskDetailComponent implements OnInit{
     private router: Router,
     private userService: UserService,
     private functionalityService: FunctionalityService,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private projectService: ProjectService
   ) {}
 
   ngOnInit(): void {
@@ -63,6 +68,14 @@ export class TaskDetailComponent implements OnInit{
           const results = functionalities.filter(functionality => functionality.key == this.task.functionalityKey);
           this.functionality = results[0];
         });
+      }
+
+      if (this.task && this.task.projectKey) {
+        this.projectService.getProjectById(this.task.projectKey).subscribe(projects => {
+          if (projects.length > 0) {
+            this.project = projects[0];
+          }
+        })
       }
     });
 

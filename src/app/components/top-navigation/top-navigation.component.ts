@@ -9,15 +9,13 @@ import { ProjectService } from 'src/app/services/project.service';
   templateUrl: './top-navigation.component.html',
   styleUrls: ['./top-navigation.component.scss']
 })
-export class TopNavigationComponent implements OnDestroy {
+export class TopNavigationComponent {
   projects: any;
-  displayNavigation: boolean = false;
-  private authSubscription: Subscription| undefined;
 
   constructor(
     private projectService: ProjectService,
     private router: Router,
-    private authService: AuthService
+    protected authService: AuthService
   ) {}
 
     selectedProjectKey: string = '';
@@ -29,10 +27,6 @@ export class TopNavigationComponent implements OnDestroy {
   async ngOnInit() {
     await this.projectService.getProjects().subscribe((project) => {
       this.projects = project;
-    });
-
-    this.authSubscription = this.authService.isUserLoggedIn.subscribe((loggedIn: boolean) => {
-      this.displayNavigation = loggedIn;
     });
 
     const storageKey = localStorage.getItem("selectedProject");
@@ -58,12 +52,6 @@ export class TopNavigationComponent implements OnDestroy {
           this.roleDevops = true;
           break;
       }
-    }
-  }
-
-  ngOnDestroy() {
-    if (this.authSubscription) {
-      this.authSubscription.unsubscribe();
     }
   }
 

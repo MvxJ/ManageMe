@@ -3,5 +3,68 @@
         <app-back-button></app-back-button>
         <span class="card-title">Dashboard</span>
     </div>
-    <router-outlet></router-outlet>
+    <div class="card-body">
+        <div class="wrapper">
+            <div class="row">
+                <div class="col">
+                    <div class="stats-card">
+                        <h3>Projects:</h3> 
+                        <div class="stats">
+                            <div>
+                                {{projectsCount}}
+                            </div>
+                            <div class="icons">
+                                <fa-icon [icon]="projectsIcons"></fa-icon>
+                            </div>
+                        </div>   
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="stats-card">
+                        <h3>Tasks:</h3>
+                        <div class="stats">
+                            <div>
+                                {{tasksCount}}
+                                <span style="font-size: 16px;">in Total</span>
+                            </div>
+                            <div class="icons" style="color: #00C851;">
+                                {{doneTasksCount}}
+                                <span style="font-size: 16px;">Finished</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="stats-card">
+                        <h3>Functionalities:</h3>
+                        <div class="stats">
+                            <div>
+                                {{functionalitiesCount}}
+                                <span style="font-size: 16px;">in Total</span>
+                            </div>
+                            <div class="icons" style="color: #00C851;">
+                                {{doneFunctionalities}}
+                                <span style="font-size: 16px;">Finished</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="stats-card">
+                        <h3>Registered users:</h3>
+                        <div class="stats">
+                            <div>
+                                {{userCount}}
+                            </div>
+                            <div class="icons">
+                                <fa-icon [icon]="usersIcon"></fa-icon>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

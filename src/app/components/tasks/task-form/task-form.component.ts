@@ -39,7 +39,8 @@ export class TaskFormComponent implements OnInit {
     userKey: '',
     functionalityKey: '',
     createdAt: new Date(),
-    finishedAt: null
+    finishedAt: null,
+    projectKey: ''
   };
 
   ngOnInit() {
@@ -134,6 +135,13 @@ export class TaskFormComponent implements OnInit {
 
       if (priority) {
         this.task.priority = priority;
+      }
+
+
+      const projectKey = localStorage.getItem("selectedProject");
+      
+      if(projectKey) {
+        this.task.projectKey = projectKey;
       }
 
       const response = await this.taskService.addTask(this.task);

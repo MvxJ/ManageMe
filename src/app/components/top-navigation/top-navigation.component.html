@@ -1,4 +1,4 @@
-<div class="navigation" *ngIf="displayNavigation">
+<div class="navigation" *ngIf="this.authService.isUserLoggedIn|async">
     <div class="logo-container">
         <a routerLink="">
             <img src="assets/logo_32.png" alt="logo_image">

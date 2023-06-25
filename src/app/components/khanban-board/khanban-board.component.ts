@@ -23,21 +23,11 @@ export class KhanbanBoardComponent implements OnInit {
     this.projectKey = localStorage.getItem("selectedProject");
 
     if (this.projectKey) {
-      await this.functionalityService.findFunctionalitiesByProjectKey(this.projectKey).subscribe((functionalities) => {
-        this.functionalities = functionalities;
-        console.log(functionalities)
-        
-        if (functionalities.length > 0) {
-          functionalities.forEach(functionality => {
-            this.taskService.getTasksByFuncitonalityKey(functionality.key).subscribe((tasks) => {
-              this.tasks.push(...tasks);
-              this.todo.push(...tasks.filter(task => task.status === 'onhold'));
-              this.doing.push(...tasks.filter(task => task.status === 'doing'));
-              this.done.push(...tasks.filter(task => task.status === 'done'));
-            })
-          });
-        }
-      })
+      this.taskService.getTasksByProjectKey(this.projectKey).subscribe((tasks) => {
+        this.todo = tasks.filter(task => task.status === 'onhold');
+        this.doing = tasks.filter(task => task.status === 'doing');
+        this.done = tasks.filter(task => task.status === 'done');
+      });
     }
   }
 }
